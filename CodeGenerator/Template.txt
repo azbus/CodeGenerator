@@ -1,0 +1,11 @@
+﻿when b"{byte_code}" =>
+	            for byte_index in 0 to (C_S_AXI_DATA_WIDTH/8-1) loop
+	              if ( S_AXI_WSTRB(byte_index) = '1' ) then
+	                -- Respective byte enables are asserted as per write strobes                   
+	                -- slave registor {register_number}
+					-- slave registor {register_number*2}
+					-- slave registor {register_number+1}
+					-- slave registor {register_number*2+1}
+	                slv_reg{register_number}(byte_index*8+7 downto byte_index*8) <= S_AXI_WDATA(byte_index*8+7 downto byte_index*8);
+	              end if;
+	            end loop;
